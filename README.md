@@ -17,7 +17,7 @@ for Generative Adversarial Style Transfer](https://arxiv.org/pdf/2008.02198)
 Deep Learning](https://mdpi-res.com/d_attachment/information/information-16-00157/article_deploy/information-16-00157-v2.pdf?version=1740053966)
 9. *(Tomek)* [AdaAttN: Revisit Attention Mechanism in Arbitrary Neural Style Transfer](https://arxiv.org/pdf/2108.03647)
 
-## Considered model architectures
+## Model architectures
 
 - CycleGAN
 - UNIT
@@ -25,9 +25,17 @@ Deep Learning](https://mdpi-res.com/d_attachment/information/information-16-0015
 - StyleGAN
 - GauGAN
 - VAE-GAN?
+- DE-GAN
 - Pix2Pix
 - AdaIN
+- VGG19
 - DSMAP (unsupervised image translation)
+
+### Considered model architectures
+
+- GAN -> DE-GAN
+- Transformer -> HSI
+- Diffusion
 
 ## Evaluation methods
 
@@ -39,6 +47,7 @@ ilarity Index Measure (SSIM),
 Perceptual Image Patch Similarity (LPIPS),
 - Frchet Inception Distance (FID),
 - Kernel Inception Distance (KID)
+- Inception Score
 
 ## Milestones
 
@@ -48,3 +57,9 @@ Perceptual Image Patch Similarity (LPIPS),
 - Insights from research papers.
 - Finalized topic.
 - **Model performance evaluation**
+
+
+### 2
+
+- Checkboard patterns
+- Frame on generated image, possibly conv padding might help
