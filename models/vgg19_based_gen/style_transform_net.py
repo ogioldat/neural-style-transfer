@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Dict, Literal, Tuple
 import keras
 import tensorflow as tf
 from .generator import GeneratorNetwork
@@ -64,20 +64,20 @@ class StyleTransferNet(keras.Model):
 
         total_loss = (self.alpha * c_loss) + (self.beta * s_loss)
 
-        return total_loss, generated_image
+        return total_loss, generated_image, c_loss, s_loss
 
     @tf.function
-    def train_step(self, data):
+    def train_step(self, data) -> dict[Literal["loss", "content_loss", "style_loss"], float]:
         content_image = data
 
         with tf.GradientTape() as tape:
-            total_loss, generated_image = self.compute_loss(content_image)
+            total_loss, generated_image, c_loss, s_loss = self.compute_loss(content_image)
 
         trainable_vars = self.generator.trainable_variables
         gradients = tape.gradient(total_loss, trainable_vars)
         self.optimizer.apply_gradients(zip(gradients, trainable_vars))
 
-        return {"loss": total_loss}
+        return {"loss": total_loss, 'content_loss': c_loss, 'style_loss': s_loss}
 
     @tf.function
     def call(self, inputs):

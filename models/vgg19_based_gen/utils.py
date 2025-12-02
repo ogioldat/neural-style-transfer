@@ -22,7 +22,7 @@ class SaveOnEpochEnd(tf.keras.callbacks.Callback):
         self.paths_save_id = paths_save_id
 
     def on_epoch_end(self, epoch, logs=None):
-        save_model(self.model, id=f"{self.paths_save_id}-ep{epoch}")
+        save_model(self.model, id=f"{self.paths_save_id}")
 
 
 def save_model(model, id="default"):
