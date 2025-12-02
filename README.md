@@ -63,3 +63,7 @@ Perceptual Image Patch Similarity (LPIPS),
 
 - Checkboard patterns
 - Frame on generated image, possibly conv padding might help
+
+### Artist (DCNN) and Critic (VGG19)
+
+- [ ] reflection padding to mitigate borders around images
