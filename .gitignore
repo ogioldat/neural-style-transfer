@@ -3,3 +3,4 @@ data
 .DS_Store
 .venv_metal
 __pycache__
+.mypy_cache

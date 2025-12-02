@@ -4,6 +4,12 @@
 
 ### VGG19 with learnable generator net
 
+#### Eliminating borders
+
+Reflection Padding
+
+![alt text](image.png)
+
 ### Fast Style Transfer
 
 ### GAN

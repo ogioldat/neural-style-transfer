@@ -1,4 +1,4 @@
-from typing import Dict, Literal, Tuple
+from typing import Literal, Tuple
 import keras
 import tensorflow as tf
 from .generator import GeneratorNetwork
@@ -11,13 +11,14 @@ class StyleTransferNet(keras.Model):
         self,
         input_shape: Tuple,
         style_image: tf.Tensor,
-        content_weight: float = 1e4,
-        style_weight: float = 1e-2,
+        alpha: float,
+        beta: float,
+        use_reflection_padding = False
     ):
         super().__init__()
 
-        self.alpha = tf.constant(content_weight, dtype=tf.float32, name="alpha")
-        self.beta = tf.constant(style_weight, dtype=tf.float32, name="beta")
+        self.alpha = tf.constant(alpha, dtype=tf.float32, name="alpha")
+        self.beta = tf.constant(beta, dtype=tf.float32, name="beta")
 
         self.generator = GeneratorNetwork(input_shape)
         self.vgg_feature_extractor = VGGFeatureExtractor()
