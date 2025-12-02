@@ -10,6 +10,8 @@ Reflection Padding
 
 ![alt text](image.png)
 
+#### Removing the "checkerboard" effect
+
 ### Fast Style Transfer
 
 ### GAN

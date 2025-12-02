@@ -27,9 +27,9 @@ def get_model_name(model, path_save_id=None, suffix=None):
 
 
 class SaveOnEpochEnd(tf.keras.callbacks.Callback):
-    def __init__(self, paths_save_id=None, suffix=None):
+    def __init__(self, path_save_id=None, suffix=None):
         super().__init__()
-        self.paths_save_id = paths_save_id
+        self.path_save_id = path_save_id
         self.suffix = suffix
 
     def on_epoch_end(self, epoch, logs=None):

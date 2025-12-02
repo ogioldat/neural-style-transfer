@@ -3,7 +3,7 @@ import keras
 import tensorflow as tf
 from .generator import GeneratorNetwork
 from .feature_extractor import VGGFeatureExtractor
-from .utils import preprocess,  gram_matrix
+from .utils import preprocess, gram_matrix
 
 
 class StyleTransferNet(keras.Model):
@@ -13,14 +13,21 @@ class StyleTransferNet(keras.Model):
         style_image: tf.Tensor,
         alpha: float,
         beta: float,
-        use_reflection_padding = False
+        gamma: float = 1e-3,
+        use_upsampling: bool = False,
+        use_reflection_padding: bool = False,
     ):
         super().__init__()
 
         self.alpha = tf.constant(alpha, dtype=tf.float32, name="alpha")
         self.beta = tf.constant(beta, dtype=tf.float32, name="beta")
+        self.gamma = tf.constant(gamma, dtype=tf.float32, name="gamma")
 
-        self.generator = GeneratorNetwork(input_shape)
+        self.generator = GeneratorNetwork(
+            input_shape,
+            use_upsampling=use_upsampling,
+            use_reflection_padding=use_reflection_padding,
+        )
         self.vgg_feature_extractor = VGGFeatureExtractor()
 
         self.num_style_layers = 4
@@ -35,6 +42,12 @@ class StyleTransferNet(keras.Model):
 
     def compile(self, optimizer, loss=None, metrics=None, loss_weights=None, **kwargs):
         super().compile(optimizer=optimizer, metrics=metrics, **kwargs)
+
+    def total_variation_loss(self, image: tf.Tensor) -> tf.Tensor:
+        x_deltas = image[:, :, 1:, :] - image[:, :, :-1, :]
+        y_deltas = image[:, 1:, :, :] - image[:, :-1, :, :]
+
+        return tf.reduce_mean(tf.abs(x_deltas)) + tf.reduce_mean(tf.abs(y_deltas))
 
     @tf.function
     def compute_loss(self, content_image: tf.Tensor) -> tf.Tensor:
@@ -63,22 +76,30 @@ class StyleTransferNet(keras.Model):
             layer_loss = tf.reduce_mean(tf.square(output - target))
             s_loss += layer_loss / (chans * chans)
 
-        total_loss = (self.alpha * c_loss) + (self.beta * s_loss)
+        tv_loss = self.total_variation_loss(generated_image)
+
+        total_loss = (
+            (self.alpha * c_loss) + (self.beta * s_loss) + (self.gamma * tv_loss)
+        )
 
         return total_loss, generated_image, c_loss, s_loss
 
     @tf.function
-    def train_step(self, data) -> dict[Literal["loss", "content_loss", "style_loss"], float]:
+    def train_step(
+        self, data
+    ) -> dict[Literal["loss", "content_loss", "style_loss"], float]:
         content_image = data
 
         with tf.GradientTape() as tape:
-            total_loss, generated_image, c_loss, s_loss = self.compute_loss(content_image)
+            total_loss, generated_image, c_loss, s_loss = self.compute_loss(
+                content_image
+            )
 
         trainable_vars = self.generator.trainable_variables
         gradients = tape.gradient(total_loss, trainable_vars)
         self.optimizer.apply_gradients(zip(gradients, trainable_vars))
 
-        return {"loss": total_loss, 'content_loss': c_loss, 'style_loss': s_loss}
+        return {"loss": total_loss, "content_loss": c_loss, "style_loss": s_loss}
 
     @tf.function
     def call(self, inputs):

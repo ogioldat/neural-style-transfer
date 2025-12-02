@@ -9,9 +9,12 @@ class ResidualBlock(layers.Layer):
         self,
         channels: int,
         kernel_size: int = 3,
+        use_reflection_padding = False,
         **kwargs,
     ):
         super(ResidualBlock, self).__init__(**kwargs)
+        
+        self.use_reflection_padding = use_reflection_padding
 
         self.channels = channels
         self.kernel_size = kernel_size
@@ -30,12 +33,16 @@ class ResidualBlock(layers.Layer):
         self.norm2 = InstanceNorm()
 
     def call(self, inputs):
-        x = self.pad1(inputs)
-        x = self.conv1(x)
+        if self.use_reflection_padding:
+            x = self.pad1(inputs)
+            x = self.conv1(x)
+        else:
+            x = self.conv1(inputs)
         x = self.norm1(x)
         x = self.relu(x)
 
-        x = self.pad2(x)
+        if self.use_reflection_padding:
+            x = self.pad2(x)
         x = self.conv2(x)
         x = self.norm2(x)
 
