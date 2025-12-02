@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ..
+
 /Library/Frameworks/Python.framework/Versions/3.11/bin/python3 -m venv .venv_metal
 source .venv_metal/bin/activate
 
