@@ -1,0 +1,3 @@
+epoch,content_loss,loss,style_loss,val_content_loss,val_loss,val_style_loss
+0,98700.0625,987001344.0,6.85822868347168,NA,NA,NA
+1,58655.296875,586553600.0,6.562124252319336,NA,NA,NA

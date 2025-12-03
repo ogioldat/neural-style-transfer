@@ -2,6 +2,8 @@ import keras
 import tensorflow as tf
 from os import path
 
+BASE_CHECKPOINTS_DIR = "checkpoints/weights/"
+
 
 def preprocess(image):
     image = tf.image.convert_image_dtype(image, tf.float32)
@@ -27,21 +29,29 @@ def get_model_name(model, path_save_id=None, suffix=None):
 
 
 class SaveOnEpochEnd(tf.keras.callbacks.Callback):
-    def __init__(self, path_save_id=None, suffix=None):
+    def __init__(self, path_save_id=None, subdir=None, suffix=None):
         super().__init__()
         self.path_save_id = path_save_id
+        self.subdir = subdir
         self.suffix = suffix
 
     def on_epoch_end(self, epoch, logs=None):
+        dir = BASE_CHECKPOINTS_DIR
+
+        if self.subdir is not None:
+            dir = path.join(dir, self.subdir)
+
         save_model(
-            self.model, id=get_model_name(self.model, self.path_save_id, self.suffix)
+            self.model,
+            dir=dir,
+            id=get_model_name(self.model, self.path_save_id, self.suffix),
         )
 
 
-def save_model(model, id="default"):
-    model.generator.save_weights(path.join("checkpoints/weights/", id, id))
+def save_model(model, dir=BASE_CHECKPOINTS_DIR, id="default"):
+    model.generator.save_weights(path.join(dir, id, id))
 
 
-def restore_model(model, id="default"):
-    model.generator.load_weights(path.join("checkpoints/weights/", id, id))
+def restore_model(model, dir=BASE_CHECKPOINTS_DIR, id="default"):
+    model.generator.load_weights(path.join(dir, id, id))
     return model

@@ -15,20 +15,22 @@ class ResidualBlock(layers.Layer):
         super(ResidualBlock, self).__init__(**kwargs)
         
         self.use_reflection_padding = use_reflection_padding
+        
+        padding_type = "valid" if use_reflection_padding else "same"
 
         self.channels = channels
         self.kernel_size = kernel_size
 
         self.pad1 = ReflectionPadding2D(padding=(1, 1))
         self.conv1 = layers.Conv2D(
-            self.channels, self.kernel_size, padding="valid", use_bias=True
+            self.channels, self.kernel_size, padding=padding_type, use_bias=True
         )
         self.norm1 = InstanceNorm()
         self.relu = layers.ReLU()
 
         self.pad2 = ReflectionPadding2D(padding=(1, 1))
         self.conv2 = layers.Conv2D(
-            self.channels, self.kernel_size, padding="valid", use_bias=True
+            self.channels, self.kernel_size, padding=padding_type, use_bias=True
         )
         self.norm2 = InstanceNorm()
 

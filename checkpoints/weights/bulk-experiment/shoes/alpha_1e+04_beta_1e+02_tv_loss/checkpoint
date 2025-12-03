@@ -1,0 +1,2 @@
+model_checkpoint_path: "alpha_1e+04_beta_1e+02_tv_loss"
+all_model_checkpoint_paths: "alpha_1e+04_beta_1e+02_tv_loss"

@@ -43,6 +43,7 @@ class StyleTransferNet(keras.Model):
     def compile(self, optimizer, loss=None, metrics=None, loss_weights=None, **kwargs):
         super().compile(optimizer=optimizer, metrics=metrics, **kwargs)
 
+    @tf.function
     def total_variation_loss(self, image: tf.Tensor) -> tf.Tensor:
         x_deltas = image[:, :, 1:, :] - image[:, :, :-1, :]
         y_deltas = image[:, 1:, :, :] - image[:, :-1, :, :]

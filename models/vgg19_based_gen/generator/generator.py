@@ -55,7 +55,9 @@ def GeneratorNetwork(input_shape, use_upsampling=False, use_reflection_padding=F
 
     if use_reflection_padding:
         x = ReflectionPadding2D(padding=(4, 4))(x)
-    outputs = layers.Conv2D(3, 9, activation="tanh", padding="valid")(x)
+        outputs = layers.Conv2D(3, 9, activation="tanh", padding="valid")(x)
+    else:
+        outputs = layers.Conv2D(3, 9, activation="tanh", padding="same")(x)
 
     outputs = (outputs + 1) / 2.0
 

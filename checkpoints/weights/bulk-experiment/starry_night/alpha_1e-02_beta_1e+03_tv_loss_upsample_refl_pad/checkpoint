@@ -1,0 +1,2 @@
+model_checkpoint_path: "alpha_1e-02_beta_1e+03_tv_loss_upsample_refl_pad"
+all_model_checkpoint_paths: "alpha_1e-02_beta_1e+03_tv_loss_upsample_refl_pad"

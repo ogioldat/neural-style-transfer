@@ -1,20 +1,12 @@
 import dataclasses
+from typing import List
 
 
-@dataclasses.dataclass
-class ExperimentConfig:
-    alpha: float
-    beta: float
-    use_upsampling: bool
-    use_reflection_padding: bool
-    lr: float
-    num_epochs: int
+
     
 
 
-
-
-EXPERIMENT_CONFIGS = [
+EXPERIMENTS: List[ExperimentConfig] = [
     ExperimentConfig(
         alpha=1e5,
         beta=1e1,
@@ -53,6 +45,6 @@ EXPERIMENT_CONFIGS = [
         use_upsampling=True,
         use_reflection_padding=True,
         lr=5e-5,
-        num_epochs=5,
+        num_epochs=4,
     ),
 ]
