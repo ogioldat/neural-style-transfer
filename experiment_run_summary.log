@@ -44,3 +44,12 @@
 2025-12-03 09:55:03 - INFO -   > Results saved to: img/.../shoes and CSV to: logs/experiments/shoes/exp_1_a1e-03_b1e+04_lr1e-04_UP_RP.csv
 2025-12-03 09:55:03 - INFO - --------------------------------------------------
 
+2025-12-03 11:44:54 - WARNING - Skipping full serialization of Keras layer <models.vgg19_based_gen.style_transform_net.StyleTransferNet object at 0x176c5fd90>, because it is not built.
+2025-12-03 11:45:42 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-03 11:45:44 - INFO - Assets written to: test/assets
+2025-12-03 11:46:11 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-03 11:46:12 - INFO - Assets written to: alpha_1e-02_beta_1e+03/assets
+2025-12-03 11:46:37 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-03 11:46:38 - INFO - Assets written to: saved_models/assets
+2025-12-03 11:47:15 - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-12-03 11:47:16 - INFO - Assets written to: saved_models/alpha_1e-02_beta_1e+03/assets
