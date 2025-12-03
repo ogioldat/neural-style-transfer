@@ -1,0 +1,46 @@
+2025-12-03 09:08:57 - INFO - Starting batch of 2 experiments for style: starry_night
+2025-12-03 09:08:57 - INFO - --------------------------------------------------
+2025-12-03 09:08:57 - INFO - STARTING EXPERIMENT 1/2:
+2025-12-03 09:08:57 - INFO -   > Content Weight (alpha): 1e-03
+2025-12-03 09:08:57 - INFO -   > Style Weight (beta): 1e+03
+2025-12-03 09:08:57 - INFO -   > Learning Rate (LR): 1.0e-04
+2025-12-03 09:08:57 - INFO -   > Upsampling Enabled: True
+2025-12-03 09:08:58 - INFO -   > Training model for 1 epochs...
+2025-12-03 09:20:25 - INFO -   > Training complete. Saving final image and logs.
+2025-12-03 09:20:27 - INFO -   > Results saved to: img/.../starry_night and CSV to: logs/experiments/starry_night/exp_0_a1e-03_b1e+03_lr1e-04_UP_RP.csv
+2025-12-03 09:20:27 - INFO - --------------------------------------------------
+
+2025-12-03 09:20:27 - INFO - --------------------------------------------------
+2025-12-03 09:20:27 - INFO - STARTING EXPERIMENT 2/2:
+2025-12-03 09:20:27 - INFO -   > Content Weight (alpha): 1e-03
+2025-12-03 09:20:27 - INFO -   > Style Weight (beta): 1e+04
+2025-12-03 09:20:27 - INFO -   > Learning Rate (LR): 1.0e-04
+2025-12-03 09:20:27 - INFO -   > Upsampling Enabled: True
+2025-12-03 09:20:27 - INFO -   > Training model for 1 epochs...
+2025-12-03 09:32:00 - INFO -   > Training complete. Saving final image and logs.
+2025-12-03 09:32:01 - INFO -   > Results saved to: img/.../starry_night and CSV to: logs/experiments/starry_night/exp_1_a1e-03_b1e+04_lr1e-04_UP_RP.csv
+2025-12-03 09:32:01 - INFO - --------------------------------------------------
+
+2025-12-03 09:32:01 - INFO - Starting batch of 2 experiments for style: shoes
+2025-12-03 09:32:01 - INFO - --------------------------------------------------
+2025-12-03 09:32:01 - INFO - STARTING EXPERIMENT 1/2:
+2025-12-03 09:32:01 - INFO -   > Content Weight (alpha): 1e-03
+2025-12-03 09:32:01 - INFO -   > Style Weight (beta): 1e+03
+2025-12-03 09:32:01 - INFO -   > Learning Rate (LR): 1.0e-04
+2025-12-03 09:32:01 - INFO -   > Upsampling Enabled: True
+2025-12-03 09:32:02 - INFO -   > Training model for 1 epochs...
+2025-12-03 09:43:26 - INFO -   > Training complete. Saving final image and logs.
+2025-12-03 09:43:27 - INFO -   > Results saved to: img/.../shoes and CSV to: logs/experiments/shoes/exp_0_a1e-03_b1e+03_lr1e-04_UP_RP.csv
+2025-12-03 09:43:27 - INFO - --------------------------------------------------
+
+2025-12-03 09:43:27 - INFO - --------------------------------------------------
+2025-12-03 09:43:27 - INFO - STARTING EXPERIMENT 2/2:
+2025-12-03 09:43:27 - INFO -   > Content Weight (alpha): 1e-03
+2025-12-03 09:43:27 - INFO -   > Style Weight (beta): 1e+04
+2025-12-03 09:43:27 - INFO -   > Learning Rate (LR): 1.0e-04
+2025-12-03 09:43:27 - INFO -   > Upsampling Enabled: True
+2025-12-03 09:43:28 - INFO -   > Training model for 1 epochs...
+2025-12-03 09:55:02 - INFO -   > Training complete. Saving final image and logs.
+2025-12-03 09:55:03 - INFO -   > Results saved to: img/.../shoes and CSV to: logs/experiments/shoes/exp_1_a1e-03_b1e+04_lr1e-04_UP_RP.csv
+2025-12-03 09:55:03 - INFO - --------------------------------------------------
+
