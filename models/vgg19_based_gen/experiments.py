@@ -10,6 +10,8 @@ from models import StyleTransferNet
 from models.vgg19_based_gen import SaveOnEpochEnd, restore_model, get_model_name
 
 
+IMG_SIZE = 256
+
 @dataclasses.dataclass
 class ExperimentConfig:
     alpha: float
