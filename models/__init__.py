@@ -12,13 +12,8 @@ from .fast_style_transfer import (
     show_style_transfer_triplet as fast_style_show_triplet,
     train_style_transfer as fast_style_train,
 )
-from .vgg19_based_gen.style_transform_net import StyleTransferNet
-from .vgg19_based_gen.utils import SaveOnEpochEnd, get_model_name
 
 __all__ = [
-    "StyleTransferNet",
-    "SaveOnEpochEnd",
-    "get_model_name",
     "FastStyleTransfer",
     "FastStyleExperimentConfig",
     "FastStyleExperimentResult",
